@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>EMPRENDE CON INVERSIONES F&R</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+
+<style>
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f2f4f7;
+  color:#222;
+  overflow-x:hidden;
+}
+
+/* HERO */
+.hero-header{
+  position:relative;
+  height:85vh;
+  background:linear-gradient(135deg,#0a2a4a,#0b3c6f);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.hero-text{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  color:#fff;
+}
+.title-anim{
+  font-size:64px;
+  font-family:Georgia,serif;
+  letter-spacing:3px;
+  animation:fadeText 6s infinite;
+  text-shadow:0 0 25px gold;
+}
+@keyframes fadeText{
+  0%{opacity:0;transform:scale(.9)}
+  30%{opacity:1}
+  70%{opacity:1}
+  100%{opacity:0;transform:scale(1.1)}
+}
+.hero-mensaje{
+  margin-top:15px;
+  font-size:18px;
+  animation:rebote 2.5s infinite;
+}
+@keyframes rebote{
+  0%{transform:translateY(-10px)}
+  50%{transform:translateY(10px)}
+  100%{transform:translateY(-10px)}
+}
+canvas{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+}
+
+/* LAYOUT */
+main{
+  display:grid;
+  grid-template-columns:3fr 1.3fr;
+  gap:30px;
+  padding:40px;
+}
+section{
+  background:#fff;
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 6px 20px rgba(0,0,0,.08);
+  margin-bottom:30px;
+}
+h2,h3{color:#0a3c6e;margin-top:0}
+
+/* VERSICULOS */
+.versiculo{
+  background:#000;
+  color:#f5c97a;
+  padding:15px;
+  border-radius:10px;
+  margin-bottom:12px;
+  cursor:pointer;
+}
+.versiculo p{
+  display:none;
+  color:#fff;
+  margin-top:10px;
+}
+.versiculo.activo p{display:block}
+
+/* LIBRO */
+.caida{
+  font-size:26px;
+  text-align:center;
+  margin:40px auto;
+  animation:caer 2s;
+}
+@keyframes caer{
+  from{opacity:0;transform:translateY(-60px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.btn-libro{
+  display:inline-block;
+  padding:16px 42px;
+  background:linear-gradient(135deg,#1fa2ff,#12d8fa);
+  color:#fff;
+  border-radius:50px;
+  font-size:18px;
+  cursor:pointer;
+  animation:pulse 2.5s infinite;
+  border:none;
+}
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.08)}
+  100%{transform:scale(1)}
+}
+.hoja,.cuentas{
+  display:none;
+  max-width:900px;
+  margin:40px auto;
+  padding:50px;
+  border-radius:20px;
+}
+.hoja{
+  background:#f3efe2;
+  color:#3a2f1c;
+  box-shadow:0 25px 50px rgba(0,0,0,.45);
+  position:relative;
+}
+.pagina{
+  position:absolute;
+  bottom:20px;
+  right:30px;
+  font-size:14px;
+}
+.cuentas{
+  background:#0b1c2d;
+  color:#fff;
+}
+
+/* FOOTER */
+footer{
+  background:#0a3c6e;
+  color:#fff;
+  text-align:center;
+  padding:20px;
+}
+
+@media(max-width:900px){
+  main{grid-template-columns:1fr}
+  .title-anim{font-size:40px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero-header">
+<canvas id="moneyRain"></canvas>
+<div class="hero-text">
+<h1 class="title-anim">EMPRENDE CON INVERSIONES F&R</h1>
+<p class="hero-mensaje">QUE SER POBRE NO TE LIMITE A EMPRENDER</p>
+</div>
+</header>
+
+<main>
+<div>
+
+<section>
+<h2>📖 Versículos Emprendedores</h2>
+<div class="versiculo"><h4>Filipenses 4:13</h4><p>Todo lo puedo en Cristo que me fortalece.</p></div>
+<div class="versiculo"><h4>Proverbios 10:22</h4><p>La bendición de Jehová es la que enriquece.</p></div>
+<div class="versiculo"><h4>Salmos 37:5</h4><p>Encomienda a Jehová tu camino.</p></div>
+<div class="versiculo"><h4>Mateo 6:33</h4><p>Buscad primeramente el reino de Dios.</p></div>
+<div class="versiculo"><h4>Proverbios 21:5</h4><p>Los planes del diligente conducen a la abundancia.</p></div>
+<div class="versiculo"><h4>Eclesiastés 11:2</h4><p>Invierte en muchos lugares, porque no sabes qué desastre vendrá.</p></div>
+</section>
+
+<section>
+<div class="caida">📘 LIBRO DE VENTA — RD$500 | USD $8.50</div>
+<div style="text-align:center">
+<button class="btn-libro" onclick="verHoja()">VER LIBRO</button>
+</div>
+
+<div id="hoja" class="hoja">
+<div class="pagina">Página 1</div>
+<h3 style="text-align:center">Fracasos, miedos y aprendizajes</h3>
+
+<p>Cuando uno nace en un barrio humilde, aprende temprano que el fracaso no se escoge.</p>
+<p>Los primeros negocios suelen traer pérdidas, silencios y dudas internas.</p>
+<p>El miedo aparece cuando decides no conformarte con lo mismo de siempre.</p>
+<p>Cada caída deja una enseñanza que fortalece el carácter.</p>
+<p>Aprender a levantarse es la diferencia entre rendirse o avanzar.</p>
+
+<div style="text-align:center;margin-top:25px">
+<button class="btn-libro" onclick="verCuentas()">VER LIBRO COMPLETO</button>
+</div>
+</div>
+
+<div id="cuentas" class="cuentas">
+<h3>CUENTAS BANCARIAS</h3>
+<p>Banco Popular Dominicano – 845091677</p>
+<p>Banco BHD León – 31269020012</p>
+<p>Asociación Cibao – 100390101334</p>
+<p>La Nacional – 1460897785</p>
+<p>Banco Adopem – 1023180197</p>
+<p>Asociación Popular – 51112000211342</p>
+<p>BanReservas – 9600848399</p>
+
+<p style="margin-top:20px">
+Luego de realizar el pago, envía el comprobante por WhatsApp para tener acceso al libro completo.
+</p>
+
+<div style="text-align:center;margin-top:20px">
+<a href="https://wa.me/18295903007" target="_blank"
+class="btn-libro"
+style="background:linear-gradient(135deg,#25D366,#128C7E);text-decoration:none">
+📲 Enviar comprobante por WhatsApp
+</a>
+</div>
+</div>
+
+</section>
+
+</div>
+</main>
+
+<footer>© EMPRENDE CON INVERSIONES F&R</footer>
+
+<script>
+function verHoja(){
+ document.getElementById('hoja').style.display='block';
+ document.getElementById('cuentas').style.display='none';
+}
+function verCuentas(){
+ document.getElementById('cuentas').style.display='block';
+}
+
+document.querySelectorAll('.versiculo').forEach(v=>{
+ v.onclick=()=>v.classList.toggle('activo');
+});
+
+/* DINERO DOMINICANO */
+const canvas=document.getElementById('moneyRain');
+const ctx=canvas.getContext('2d');
+function resize(){
+ canvas.width=innerWidth;
+ canvas.height=innerHeight;
+}
+resize();
+addEventListener('resize',resize);
+
+const valores=[50,100,200,500,1000,2000];
+const bills=[...Array(18)].map(()=>({
+ x:Math.random()*canvas.width,
+ y:Math.random()*canvas.height,
+ v:valores[Math.floor(Math.random()*valores.length)],
+ s:0.6+Math.random()
+}));
+
+function rain(){
+ ctx.clearRect(0,0,canvas.width,canvas.height);
+ bills.forEach(b=>{
+  const img=new Image();
+  img.src=`https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Dominican_Republic_${b.v}_peso_banknote.jpg/240px-Dominican_Republic_${b.v}_peso_banknote.jpg`;
+  ctx.drawImage(img,b.x,b.y,80,35);
+  b.y+=b.s;
+  if(b.y>canvas.height)b.y=-40;
+ });
+ requestAnimationFrame(rain);
+}
+rain();
+</script>
+
+</body>
+</html>
